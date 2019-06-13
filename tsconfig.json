@@ -7,7 +7,7 @@
         //合并输出到单个文件
         "outFile": "bundle.js",
         //指定 ECMAScript 目标版本
-        "target": "es6",
+        "target": "es2017",
         //生成相应的声明文件 .d.ts, 作用:写代码时有提示
         "declaration": false,
         //生成相应的文件 .map, 作用:调试打断点指向ts文件
@@ -20,10 +20,12 @@
         "emitBOM": true,
         //删除所有注释, 但复制右侧标题注释开始时除外。
         "removeComments": true,
+        //忽略所有的声明文件（ *.d.ts）的类型检查。
+        "skipLibCheck":true,
         //报告未使用的局部变量的错误。
         "noUnusedLocals": false,
         "typeRoots": [
-            "ty提示"
+            "src/typings"
         ]
     }
 }

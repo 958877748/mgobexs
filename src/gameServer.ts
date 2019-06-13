@@ -1,5 +1,5 @@
 namespace server {
-    export class gameServer implements GameServer.IGameServer{
+    export class Server implements GameServer.IGameServer{
         /**
          * mode 是游戏 Server 处理客户端消息的模式。
          * 可以取值为 "sync" 或 "async"。
@@ -19,6 +19,11 @@ namespace server {
          * 初始化游戏数据
          */
         onInitGameData(args: { room: IRoomInfo }) {
+            let world = new WorldServer('world_1', 10)
+            //世界开始运行
+            world.run(config.map_filepath)
+            GameData.InitGameData()
+            console.log('初始化游戏数据完成')
             return {}
         }
 
@@ -97,4 +102,4 @@ namespace server {
 }
 //将 gameServer 类引用置于 exports 上
 var exports: any;
-exports.gameServer = server.gameServer;
+exports.gameServer = server.Server;
