@@ -1,4 +1,3 @@
-
 namespace server {
     export class GameData {
         static async InitGameData() {

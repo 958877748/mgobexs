@@ -1,4 +1,4 @@
-namespace main{
+namespace server{
     export class FormatChecker{
         private static _inst:FormatChecker
         static Inst():FormatChecker{

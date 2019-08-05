@@ -1,4 +1,4 @@
-namespace main{
+namespace server{
     export class MobArea extends Area{
         nb: number;
         kind: any;

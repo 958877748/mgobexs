@@ -1,9 +1,10 @@
 fs = require('fs')
 _ = require('./underscore-min')
-var server = require('./bundle')
-var gameServer = new server.gameServer()
+let bundle = require('./bundle')
+let world_data = require('./world_server')
+let s = new bundle.gameServer(world_data)
 exports.mgobexsCode = {
     //logLevelSDK?: 'debug+' | 'info+' | 'error+'
     //logLevel?: 'debug+' | 'info+' | 'error+'
-    gameServer: gameServer
+    gameServer: s
 }

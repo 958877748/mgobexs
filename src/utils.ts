@@ -1,4 +1,4 @@
-namespace main {
+namespace server {
     export namespace Utils {
         export function sanitize(string) {
             // Strip unsafe tags, then escape as html entities.

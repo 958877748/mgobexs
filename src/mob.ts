@@ -1,4 +1,4 @@
-namespace main{
+namespace server{
     export class Mob extends Character{
         spawningX: any;
         spawningY: any;

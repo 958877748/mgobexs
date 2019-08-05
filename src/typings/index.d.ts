@@ -1,4 +1,11 @@
-declare namespace fs{
+declare namespace fs {
+
+    /**
+     * Asynchronous lstat(2) - 获取文件状态. Does not dereference symbolic links.
+     * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
+     */
+    function lstat(path: PathLike): Promise<Stats>;
+    function lstatSync(...par)
     /**
      * Valid types for path values in "fs".
      */
@@ -78,30 +85,30 @@ declare namespace fs{
 }
 
 
-declare var process:any
-declare function getIO():any
-declare var _:any
-declare var sanitizer:any
+declare var process: any
+declare function getIO(): any
+declare var _: any
+declare var sanitizer: any
 /** 分布式的高速缓存系统 */
-declare namespace memcache{
-    export class Client{
-        constructor(p1:any,p2:any)
+declare namespace memcache1 {
+    export class Client {
+        constructor(p1: any, p2: any)
     }
 }
 
-interface 配置{
+interface 配置 {
     /** IP */
-    host:string,
+    host: string,
     /** 端口号 */
-    port:number,
+    port: number,
     /** 调试等级 */
-    debug_level:string,
+    debug_level: string,
     /** 每个世界的玩家数量上限 */
-    nb_players_per_world:number
+    nb_players_per_world: number
     /** 世界数量上限 */
-    nb_worlds:number,
+    nb_worlds: number,
     /** 地图文件路径 */
-    map_filepath:string,
+    map_filepath: string,
     /** 这个应该时是否使用分布式缓存系统 */
-    metrics_enabled:boolean
+    metrics_enabled: boolean
 }

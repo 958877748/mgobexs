@@ -1,8 +1,8 @@
-namespace main{
+namespace server{
     export class Player extends Character{
         group:string
-        server: worldserver;
-        connection: SocketIOConnection;
+        server: WorldServer;
+        connection: Connection;
         hasEnteredGame: boolean;
         isDead: boolean;
         haters: {};
@@ -33,7 +33,12 @@ namespace main{
         orient_callback: any;
         requestpos_callback: any;
         
-        constructor (connection:SocketIOConnection, worldServer:worldserver) {
+        /**
+         * 
+         * @param connection 与玩家的连接
+         * @param worldServer 玩家所在的世界服务器
+         */
+        constructor (connection:Connection, worldServer:WorldServer) {
             super(connection.id, "player", Types.Entities.WARRIOR, 0, 0);
             var self = this;
             
@@ -55,16 +60,19 @@ namespace main{
                 
                 console.log("收到客户端消息: " + message);
                 if(!check(message)) {
-                    self.connection.close("Invalid "+Types.getMessageTypeAsString(action)+" message format: "+message);
+                    self.connection.close("无效 "+Types.getMessageTypeAsString(action)+" message format: "+message);
                     return;
                 }
                 
-                if(!self.hasEnteredGame && action !== Types.Messages.HELLO) { // HELLO must be the first message
-                    self.connection.close("Invalid handshake message: "+message);
+                // HELLO 必须是是第一条信息
+                if(!self.hasEnteredGame && action !== Types.Messages.HELLO) { 
+                    self.connection.close("无效的握手消息: "+message);
                     return;
                 }
-                if(self.hasEnteredGame && !self.isDead && action === Types.Messages.HELLO) { // HELLO can be sent only once
-                    self.connection.close("Cannot initiate handshake twice: "+message);
+
+                // HELLO 只能发送一次
+                if(self.hasEnteredGame && !self.isDead && action === Types.Messages.HELLO) { 
+                    self.connection.close("无法启动两次握手: "+message);
                     return;
                 }
                 
@@ -397,12 +405,17 @@ namespace main{
         onRequestPosition (callback) {
             this.requestpos_callback = callback;
         }
-        /** 重置超时 */
+
+        /** 
+         * 重置超时 
+         */
         resetTimeout () {
             clearTimeout(this.disconnectTimeout);
             this.disconnectTimeout = setTimeout(this.timeout.bind(this), 1000 * 60 * 15); // 15 min.
         }
-        /** 客户端15分钟都没动了,超时 */
+        /** 
+         * 客户端15分钟都没动了,超时 
+         */
         timeout () {
             //发送 timeout 字段
             this.connection.sendUTF8("timeout")

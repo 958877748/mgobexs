@@ -1,4 +1,4 @@
-namespace main{
+namespace server{
     export class Formulas{
         static dmg(weaponLevel, armorLevel){
             var dealt = weaponLevel * Utils.randomInt(5, 10),

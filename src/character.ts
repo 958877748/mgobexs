@@ -1,5 +1,5 @@
 ///<reference path="entity.ts"/>
-namespace main{
+namespace server{
     export class Character extends Entity{
         orientation: any;
         attackers: {};

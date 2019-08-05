@@ -1,4 +1,4 @@
-namespace main{
+namespace server{
     export class Entity{
         id: number;
         type: any;

@@ -1,4 +1,4 @@
-namespace main{
+namespace server{
     export class Area{
         id: any;
         x: any;

@@ -94,7 +94,7 @@ namespace server {
 	}
 
 	export interface UserDefinedData {
-		[key: string]: any;
+		//[key: string]: any;
 	}
 
 	interface ActionArgsExports {
@@ -107,7 +107,7 @@ namespace server {
 		error: (...args: any[]) => void;
 	}
 
-	interface ActionArgsSDK {
+	export interface ActionArgsSDK {
 		/**
 		 * 游戏 Server 向客户端推送消息。
 		 */

@@ -1,4 +1,4 @@
-namespace main{
+namespace server{
     export class Checkpoint {
         id: any;
         x: any;

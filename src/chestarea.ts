@@ -1,4 +1,4 @@
-namespace main{
+namespace server{
     export class ChestArea extends Area{
         items: any;
         chestX: any;

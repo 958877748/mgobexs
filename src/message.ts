@@ -1,4 +1,4 @@
-namespace main {
+namespace server {
     export namespace Messages {
         class Message { }
         export class Spawn extends Message {

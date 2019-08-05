@@ -1,4 +1,4 @@
-namespace main{
+namespace server{
     export class Item extends Entity{
         isStatic: boolean;
         isFromChest: boolean;

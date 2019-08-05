@@ -1,5 +1,5 @@
 ///<reference path="item.ts"/>
-namespace main{
+namespace server{
     export class Chest extends Item{
         items: any;
         constructor (id, x, y) {

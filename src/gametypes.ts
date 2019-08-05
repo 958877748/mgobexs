@@ -1,4 +1,4 @@
-namespace main{
+namespace server{
     export class Types{
         static Messages = {
             HELLO: 0,

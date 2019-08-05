@@ -166,9 +166,13 @@ namespace server{
             });
         }
         
-        run (mapFilePath) {
+        /**
+         * 开始运行
+         * @param mapFile 地图文件路径
+         */
+        run (mapFile) {
             var self = this;
-            this.map = new Map(mapFilePath);
+            this.map = new Map(mapFile);
 
             this.map.ready(function() {
                 self.initZoneGroups();
@@ -233,6 +237,10 @@ namespace server{
             this.init_callback = callback;
         }
 
+        /**
+         * 当玩家连接
+         * @param callback 回调函数
+         */
         onPlayerConnect (callback) {
             this.connect_callback = callback;
         }
@@ -869,6 +877,10 @@ namespace server{
             });
         }
         
+        /**
+         * 更新玩家数量
+         * @param totalPlayers 
+         */
         updatePopulation (totalPlayers?) {
             totalPlayers = totalPlayers ? totalPlayers : this.server.connectionsCount();
             
